@@ -14,8 +14,10 @@ from iteration import *
 
 # congratulations(names, scores)
 
-scores = [1, 2, 3, 4, 12, 17, 44, 23, 62, 118, 12, 34]
+scores = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 
-print "The sum of the numbers is %r" % sum(scores)
-print "The max number is %r" % max(scores)
+# print "The sum of the numbers is %r" % sum(scores)
+# print "The max number is %r" % max(scores)
 
+print avg_score(scores)
+print avg_score_drop_last_2(scores)

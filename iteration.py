@@ -54,3 +54,23 @@ def max(numbers):
 			current_max = n
 
 	return current_max
+
+def lowest_2(numbers):
+	current_min = numbers[0]
+	for i in range(2):
+		for n in numbers:
+			if n < current_min:
+				current_min = n
+				del numbers[n]
+	return numbers
+
+def avg_score(numbers):
+	sum1 = sum(numbers)
+	return (sum1 / (len(numbers)))
+
+def avg_score_drop_last_2(numbers):
+	low_nums_sum = numbers[0] + numbers[1]
+	sum1 = sum(numbers)
+	return int((sum1 - low_nums_sum) / (len(numbers) - 2))
+
+
