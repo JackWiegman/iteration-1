@@ -73,4 +73,38 @@ def avg_score_drop_last_2(numbers):
 	sum1 = sum(numbers)
 	return int((sum1 - low_nums_sum) / (len(numbers) - 2))
 
+def alernating_sum(numbers):
+	total = numbers[0] * 2
+	for n in range(0, len(numbers)):
+		if (n % 2) == 0:
+			total -= numbers[n]
+		else:
+			total += numbers[n]
 
+	return total
+
+def sum_outside(numbers, minimum, maximum):
+	total = 0
+	for n in numbers:
+		if n < minimum or n >= maximum:
+			total += n
+
+	return total
+
+def count_close_remainders(numbers, divisor):
+	total = 0
+	for n in numbers:
+		if numbers[n] % 5 <= 1 or numbers[n] % 5 >= 4:
+			total += 1
+
+	return total
+
+def double_down(numbers, target):
+	result = [numbers[0]]
+	for i in range(1, len(numbers)):
+		distance = abs(numbers[i] - target)
+		if numbers[i] < numbers[i - 1] or distance <= 3:
+			result.append(2 * numbers[i])
+		else:
+			result.append(numbers[i])
+	return result
