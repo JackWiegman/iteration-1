@@ -138,9 +138,9 @@ def censor(sentence, bad_words, replacement_words):
 
 
 
-print replace_letter("banana", "a", "!")
-print switch_letters("textbook", "e", "o")
-print switch_words("The quick brown fox jumps over the lazy dog", "fox", "dog")
-print censor("Spanish is a goddamn piece of motherfucking shit", ['shit', 'goddamn', 'motherfucking'], ['heck', 'darn'])
+# print replace_letter("banana", "a", "!")
+# print switch_letters("textbook", "e", "o")
+# print switch_words("The quick brown fox jumps over the lazy dog", "fox", "dog")
+# print censor("Spanish is a goddamn piece of motherfucking shit", ['shit', 'goddamn', 'motherfucking'], ['heck', 'darn'])
 # print censor("I fucking hate shit spanish.")
 # print censor("Hell fucking yeaaa boisss we fucking did it i censored the shit out of myself this is the goddamn best fucking shit ever.")
