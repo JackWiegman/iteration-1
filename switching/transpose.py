@@ -1,5 +1,5 @@
-import sys
-from switch import *
+# import sys
+# from switch import *
 
 # data = open("reveloution_radio_chorus_chords.txt", 'r')
 # lines = data.readlines()
@@ -44,6 +44,8 @@ from switch import *
 
 # print transpose(lines)
 
+from switch import sentence_to_list
+
 song = """
  C          Am7
 There's a feeling I get,
@@ -58,27 +60,34 @@ Rings of smoke through the trees,
                 C         G                     Am
 And the voices of those who stand looking."""
 
-Chords = ["A", "Bb", "B", "C", "Db", "D", "Eb", "E", "F","Gb", "G", "Ab"]
-Letters = ["A", "B", "C", "D", "E", "F", "G"]
-def transpose(song,step_down):
+chords = ["A", "Bb", "B", "C", "Db", "D", "Eb", "E", "F","Gb", "G", "Ab"]
+letters = ["A", "B", "C", "D", "E", "F", "G"]
+add_ons = ["m7", "m", "add7", "add9"]
+def transpose(song, step_up):
+    x = 0
+    test = 0
     new_string = ""
-    new_list = split_words(song)
+    add_on_num = 0
+    new_list = sentence_to_list(song)
     print new_list
-    for i in range(0,len(new_list)):
-        if new_list[i] in Chords:
-            for j in range(0, len(Chords)):
-                if new_list[i] == Chords[j]:
-                    new_string = new_string + " " + Chords[j-step_down]
-        elif "m7" in new_list[i]:
-            for y in range(0,len(Letters)):
-                if Letters[y] in new_list[i]:
-                    new_string = new_string + Letters[y-step_down] + "m7"
-        elif "m" in new_list[i]:
-            for x in range(0,len(Letters)):
-                if Letters[x] in new_list[i]:
-                    new_string = new_string + Letters[x-step_down] + "m"
+    for i in range(len(new_list)):
+        if new_list[i] in chords:
+            for j in range(len(chords)):
+                if new_list[i] == chords[j]:
+                    new_string = new_string + " " + chords[j + (step_up)]
+
+        elif add_ons[x] in new_list[i]:   
+            test += 1      
+            for k in range(len(add_ons)):
+                if add_ons[k] in new_list[i]:
+                    for h in range(len(letters)):
+                        if letters[h] in new_list[i]:
+                            new_string = new_string + letters[h + step_up] + add_ons[k]
+                break
+
         else:
             new_string = new_string +" "+ new_list[i]
+
     return new_string
 
-print transpose(song, 1)
+print transpose(song, -1)

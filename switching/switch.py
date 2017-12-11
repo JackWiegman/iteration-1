@@ -71,18 +71,20 @@ def switch_words(sentence, word1, word2):
 	return final_sentence
 
 def sentence_to_list(sentence):
+	test = 0
 	x = 0
+	test
 	space = 0
 	new_sentence = []
 	sentence_words = []
 	for i in range(len(sentence)):
-		if sentence[i] == " ":
+		if sentence[i] == " " or sentence[i] == "\n":
 			sentence_words.append(sentence[:i])
 			break
 
 	for i in range(len(sentence)):
 		if sentence[i] == " ":
-			sentence_words.append(sentence[(space + 1):i])
+			sentence_words.append(sentence[space + 1:i])
 			space = space + (i - x)
 			x = len(sentence[:i])
 
