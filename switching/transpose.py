@@ -1,49 +1,3 @@
-# import sys
-# from switch import *
-
-# data = open("reveloution_radio_chorus_chords.txt", 'r')
-# lines = data.readlines()
-
-# flats = ['A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab']
-# notes_sharps = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#']
-# add_ons = ['m', 'm7']
-
-# def transpose(notes_sharps):
-# 	new_song = []
-
-# 	for i in range(len(lines)):
-# 		if i % 2 == 0:
-# 			x = sentence_to_list(lines[i])
-# 			new_song.append(x)
-			
-# 		else:
-# 			y = sentence_to_list(lines[i])
-# 			new_song.append(y)
-	
-# 	# Make everything into one list
-# 	one_list = []
-# 	for i in range(len(new_song)):
-# 		for k in range(len(new_song[i])):
-# 			one_list.append(new_song[i][k])
-
-
-# 	# Make list of just notes
-# 	notes = []
-# 	for i in range(len(one_list)):
-# 		for k in range(len(notes_sharps)):
-# 			if one_list[i] == notes_sharps[k]:
-# 				notes.append(notes_sharps[k])
-# 			for h in range(len(add_ons)):
-# 				if one_list[i] == notes_sharps[k] + add_ons[h]:
-# 					notes.append(notes_sharps[k] + add_ons[h])
-# 				return notes
-
-# 	return notes
-			
-
-
-# print transpose(lines)
-
 from switch import sentence_to_list
 
 song = """
@@ -71,23 +25,51 @@ def transpose(song, step_up):
     new_list = sentence_to_list(song)
     print new_list
     for i in range(len(new_list)):
-        if new_list[i] in chords:
-            for j in range(len(chords)):
-                if new_list[i] == chords[j]:
-                    new_string = new_string + " " + chords[j + (step_up)]
+        if new_list[i] in chords and new_list[i] not in add_ons:
+            for j in range(0, len(letters)):
+                if new_list[i] == letters[j]:
+                    new_string = new_string + " " + letters[j + step_up]
 
-        elif add_ons[x] in new_list[i]:   
-            test += 1      
-            for k in range(len(add_ons)):
-                if add_ons[k] in new_list[i]:
-                    for h in range(len(letters)):
-                        if letters[h] in new_list[i]:
-                            new_string = new_string + letters[h + step_up] + add_ons[k]
-                break
+        elif "m7" in new_list[i]:
+            for y in range(0,len(chords)):
+                if chords[y] in new_list[i]:
+                    new_string = new_string + chords[y+step_up] + "m7"
 
-        else:
+        elif "m" in new_list[i]:
+            for x in range(0,len(chords)):
+                if chords[x] in new_list[i]:
+                    new_string = new_string + chords[x+step_up] + "m"
+    # for i in range(len(new_list)):
+    #     if new_list[i] in chords or new_list[i: i + 1] in chords:
+    #     	for k in range(len(add_ons)):
+    #     		if add_ons[k] not in new_list[i]:
+		  #           for j in range(len(chords)):
+		  #               if new_list[i] == chords[j]:
+		  #                   new_string = new_string + " " + chords[j + (step_up)]
+		  #       break
+
+	
+
+        # for j in range(len(add_ons)):
+        # 	if add_ons[j] in new_list[i]:
+        # 		for k in range(len(chords)):
+        # 			test+=1
+        # 			if chords[k] in new_list[i]:
+        # 				new_string = new_string + " " + chords[k + step_up] + add_ons[k]
+
+
+        # elif add_ons[x] in new_list[i]:      
+        #     for k in range(len(add_ons)):
+        #         if add_ons[k] in new_list[i]:
+        #             for h in range(len(letters)):
+        #                 if letters[h] in new_list[i]:
+        #                     new_string = new_string + letters[h + step_up] + add_ons[k]
+        #         break
+
+        if new_list[i] not in chords:
             new_string = new_string +" "+ new_list[i]
 
+    print test
     return new_string
 
 print transpose(song, -1)

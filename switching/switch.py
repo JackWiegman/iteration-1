@@ -88,6 +88,10 @@ def sentence_to_list(sentence):
 			space = space + (i - x)
 			x = len(sentence[:i])
 
+	for i in range(len(sentence)):
+		if sentence[i: i + 1] == "\n":
+			sentence_words.append(sentence[space:i + 1])
+
 	if len(sentence_words) >= 1:
 		sentence_words.remove(sentence_words[1])
 		sentence_words.append(sentence[space + 1:])
