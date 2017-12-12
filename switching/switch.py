@@ -87,10 +87,10 @@ def sentence_to_list(sentence):
 			sentence_words.append(sentence[space + 1:i])
 			space = space + (i - x)
 			x = len(sentence[:i])
-
-	for i in range(len(sentence)):
-		if sentence[i: i + 1] == "\n":
-			sentence_words.append(sentence[space:i + 1])
+		# elif "\n" in sentence[i: i + 1]:
+		# 	test += 1
+		# 	sentence_words.append(sentence[space:i + 1])
+		# 	sentence_words.append(sentence[i + 2:])
 
 	if len(sentence_words) >= 1:
 		sentence_words.remove(sentence_words[1])
@@ -150,3 +150,10 @@ def censor(sentence, bad_words, replacement_words):
 # print censor("Spanish is a goddamn piece of motherfucking shit", ['shit', 'goddamn', 'motherfucking'], ['heck', 'darn'])
 # print censor("I fucking hate shit spanish.")
 # print censor("Hell fucking yeaaa boisss we fucking did it i censored the shit out of myself this is the goddamn best fucking shit ever.")
+moveitmoveit = """
+I like to move it move it
+I like to move it move it 
+We like to move it move it
+We like too... MOVE IT"""
+
+print sentence_to_list(moveitmoveit)
